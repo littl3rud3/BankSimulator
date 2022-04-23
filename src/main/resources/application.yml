@@ -1,0 +1,25 @@
+spring:
+  jpa:
+    show-sql: true
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: bank-db
+
+access_key: da593c88adf973d6bc3ec2679f311759
+
+logging:
+  level:
+    root: DEBUG
+    org.mongodb.driver: DEBUG
+mongock:
+  migration-scan-package: com.example.exchangeapp.migration
+  database_name: bank-db
+  insert_count: 10
+  database_url: mongodb://localhost:27017/
+
+exchange_api_url: api.exchangeratesapi.io
+
+jwt:
+  expiration: 86400
