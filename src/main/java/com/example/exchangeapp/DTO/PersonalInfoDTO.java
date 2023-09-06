@@ -6,19 +6,19 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
-@Schema(description = "Личные данные человека")
+@Schema(description = "Personal data")
 public class PersonalInfoDTO {
 
-    @Schema(description = "Фамилия")
+    @Schema(description = "Surname")
     private String lastName;
 
-    @Schema(description = "Имя")
+    @Schema(description = "Name")
     private String firstName;
 
-    @Schema(description = "Отчество")
+    @Schema(description = "Middle name")
     private String midName;
 
-    @Schema(description = "Идентификаторы банков")
+    @Schema(description = "Bank IDs")
     private List<String> bankIds;
 
 }

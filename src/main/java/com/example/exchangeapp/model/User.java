@@ -32,11 +32,11 @@ public class User implements UserDetails {
 
     private List<String> privileges;
 
-    /* !Инкапсуляция, корректнее было бы сделать static class, но Mongock 5.0.38 не поддерживает*/
+    /* !Encapsulation, it would be more correct to make a static class, but Mongock 5.0.38 does not support */
     private PersonalInfo personalInfo;
-
-    /*Mongock создаёт List(Map), из-за этого парсинг ролей при JWT авторизации не работает*/
-    /*Для корректной авторизации надо отключать миграции и создавать коллекции вручную */
+    
+    /* Mangock creates a List(Map), because of this, role parsing does not work with JWT authorization */
+    /* For correct authorization, you need to disable migrations and create collections manually */
     @Override
     public List<SimpleGrantedAuthority> getAuthorities() {
 

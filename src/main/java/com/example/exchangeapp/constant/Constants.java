@@ -7,4 +7,6 @@ public final class Constants {
     public static final String BANK_COLLECTION_NAME = "bank";
     
     public static final String USER_COLLECTION_NAME = "user";
+    
+    public static final String ACCESS_KEY = "accessKey";
 }

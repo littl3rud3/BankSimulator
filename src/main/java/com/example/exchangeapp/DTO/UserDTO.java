@@ -8,23 +8,23 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
-@Schema(description = "Информация для личного кабинета пользователя")
+@Schema(description = "Information for the user's personal account")
 public class UserDTO {
 
     @JsonProperty(access = READ_ONLY)
-    @Schema(description = "Уникальный идентификатор")
+    @Schema(description = "ID")
     private String id;
 
-    @Schema(description = "Логин")
+    @Schema(description = "Login")
     private String login;
 
     @JsonProperty(access = WRITE_ONLY)
-    @Schema(description = "Пароль")
+    @Schema(description = "Password")
     private String password;
 
-    @Schema(description = "Баланс")
+    @Schema(description = "Balance")
     private Long amount;
 
-    @Schema(description = "Личная информация")
+    @Schema(description = "Personal info")
     private PersonalInfoDTO personalInfoId;
 }

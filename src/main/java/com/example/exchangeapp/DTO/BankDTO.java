@@ -9,16 +9,16 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
-@Schema(description = "Модель банка")
+@Schema(description = "Bank")
 public class BankDTO {
 
     @JsonProperty(access = READ_ONLY)
-    @Schema(description = "Уникальный идентификатор")
+    @Schema(description = "ID")
     private String id;
 
-    @Schema(description = "Название банка")
+    @Schema(description = "name")
     private String name;
 
-    @Schema(description = "Идентификаторы клиентов")
+    @Schema(description = "Customer IDs")
     private List<String> personIds;
 }

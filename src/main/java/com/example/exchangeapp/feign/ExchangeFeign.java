@@ -1,27 +1,26 @@
 package com.example.exchangeapp.feign;
 
 import com.example.exchangeapp.DTO.feign.ExchangeResponseDTO;
+import com.example.exchangeapp.config.ExchangeFeignConfig;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import reactivefeign.spring.config.ReactiveFeignClient;
 import reactor.core.publisher.Mono;
 
 /**
- * Клиент для обращения к API по обмену валюты.
+ * Client for accessing the Currency exchange API.
  */
-@ReactiveFeignClient(url = "${exchange_api_url}", name = "exchangeFeign")
+@ReactiveFeignClient(url = "${exchange_api_url}", name = "exchangeFeign", configuration = ExchangeFeignConfig.class)
 public interface ExchangeFeign {
 
     /**
-     * Получить курс обмена.
+     * Get the exchange rate.
      *
-     * @param accessKey Токен для доступа к API
-     * @param from      Из какой валюты переводить
-     * @param to        В какую (опционально)
-     * @return Мапа - название валюты : курс
+     * @param from      From which currency to transfer
+     * @param to        What currency to transfer to (optional)
+     * @return currency name : exchange rate
      */
     @GetMapping("/v1/latest")
-    Mono<ExchangeResponseDTO> exchange(@RequestParam("access_key") String accessKey,
-                                       @RequestParam("base") String from,
+    Mono<ExchangeResponseDTO> exchange(@RequestParam("base") String from,
                                        @RequestParam(value = "symbols", required = false) String to);
 }
