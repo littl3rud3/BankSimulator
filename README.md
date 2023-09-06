@@ -1,7 +1,7 @@
 # Bank System
 
 ## Description
-Система для хранения данных от личного кабинета пользователя.
+A system for storing data from the user's personal account.
 - Each user has an internal entity with personal data.
 - Each user can have many banks.
 - Each bank can have many customers.
