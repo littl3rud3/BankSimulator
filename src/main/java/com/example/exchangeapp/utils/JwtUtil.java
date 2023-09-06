@@ -1,5 +1,7 @@
 package com.example.exchangeapp.utils;
 
+import static com.example.exchangeapp.constant.Constants.ROLE;
+
 import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
@@ -82,7 +84,7 @@ public class JwtUtil {
     public static String generateToken(UserDetails user) {
 
         HashMap<String, Object> claims = new HashMap<>();
-        claims.put("role", user.getAuthorities());
+        claims.put(ROLE, user.getAuthorities());
 
         long expirationSeconds = EXPIRATION_TIME;
         Date creationDate = new Date();

@@ -12,57 +12,71 @@ import reactor.core.publisher.Mono;
 public interface UserService {
 
     /**
-     * Поменять имя пользователя.
+     * Change the username.
      *
      * @param userId  the user id
-     * @param newInfo новые данные
-     * @return обновлённая сущность пользователя
+     * @param newInfo new data
+     * @return updated user entity
      */
     Mono<UserDTO> changeName(String userId, PersonalInfoDTO newInfo);
 
     /**
-     * Операция траты.
+     * The operation of spending.
      *
-     * @param userId Идентификатор пользователя
-     * @param price  сумма трат
-     * @return ничего mono
+     * @param userId User ID
+     * @param price  amount of expenses
+     * @return updated user entity
      */
     Mono<UserDTO> buy(String userId, Long price);
 
     /**
-     * Пополнить баланс.
+     * Top up balance.
      *
-     * @param userId идентификатор пользователя
-     * @param amount сумма пополнения
-     * @return ничего mono
+     * @param userId User ID
+     * @param amount deposit amount
+     * @return updated user entity
      */
     Mono<UserDTO> addMoney(String userId, Long amount);
 
     /**
-     * Добавить нового пользователя.
+     * Add new user.
      *
-     * @param newUser новый пользователь
-     * @return Сохранённая сущность пользователя
+     * @param newUser new user
+     * @return Saved user entity
      */
     Mono<UserDTO> create(UserDTO newUser);
 
     /**
-     * Удалить пользователя по идентификатору.
+     * Delete a user by ID.
      *
-     * @param objectId идентификатор пользователя
-     * @return ничего mono
+     * @param objectId User ID
+     * @return Nothing
      */
     Mono<Void> delete(String objectId);
 
     /**
-     * Полная информация о пользователе.
+     * Full user Information.
      *
-     * @param userId Идентификатор пользователя
-     * @return информация о пользователе
+     * @param userId User ID
+     * @return User information
      */
     Mono<UserDTO> userInfo(String userId);
-
+    
+    /**
+     * Authorization.
+     *
+     * @param userDTO User information
+     * @return Information about authorization
+     */
     Mono<ResponseEntity<?>> login(UserDTO userDTO);
-
+    
+    /**
+     * Exchange.
+     *
+     * @param from   from which currency
+     * @param to     in what currency
+     * @param amount how much money to exchange
+     * @return conversion result
+     */
     Mono<Double> convert(String userId, Rate from, Rate to, Double amount);
 }

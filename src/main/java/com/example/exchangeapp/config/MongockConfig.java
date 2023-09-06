@@ -32,11 +32,6 @@ public class MongockConfig {
     @Value("${mongock.insert_count}")
     public static int insertCount = 10;
 
-    public static final String BANK_COLLECTION_NAME = "bank";
-
-    public static final String USER_COLLECTION_NAME = "user";
-
-
     @Bean
     public MongockInitializingBeanRunner getBuilder(MongoClient reactiveMongoClient,
                                                     ApplicationContext context) {

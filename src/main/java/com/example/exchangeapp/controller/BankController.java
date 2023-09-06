@@ -20,41 +20,41 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequiredArgsConstructor
-@Tag(name = "Контроллер для банков")
+@Tag(name = "Bank controller")
 @RequestMapping("/api/bank")
 public class BankController {
 
     private final BankService bankService;
 
-    @Operation(summary = "Получить всех клиентов банка")
+    @Operation(summary = "All bank clients")
     @GetMapping("/{bank}")
     public Flux<PersonalInfoDTO> allClients(@PathVariable("bank") String bankName) {
 
         return bankService.allClients(bankName);
     }
 
-    @Operation(summary = "Список всех банков")
+    @Operation(summary = "All banks")
     @GetMapping
     public Flux<BankDTO> allBanks() {
 
         return bankService.getAll();
     }
 
-    @Operation(summary = "Добавить новый банк")
+    @Operation(summary = "Add new bank")
     @PostMapping
     public Mono<BankDTO> create(@RequestBody BankDTO bankDTO) {
 
         return bankService.create(bankDTO);
     }
 
-    @Operation(summary = "Ребрендинг")
+    @Operation(summary = "Rebranding")
     @PutMapping("/{objectId}")
     public Mono<BankDTO> update(@PathVariable String objectId, @RequestParam String name) {
 
         return bankService.update(objectId, name);
     }
 
-    @Operation(summary = "Удалить банк")
+    @Operation(summary = "Delete bank")
     @DeleteMapping("/{objectId}")
     private Mono<Void> delete(@PathVariable String objectId) {
 

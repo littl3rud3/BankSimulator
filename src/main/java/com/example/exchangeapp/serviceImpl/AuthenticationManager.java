@@ -1,5 +1,7 @@
 package com.example.exchangeapp.serviceImpl;
 
+import static com.example.exchangeapp.constant.Constants.ROLE;
+
 import java.util.List;
 
 import com.example.exchangeapp.utils.JwtUtil;
@@ -24,7 +26,6 @@ public class AuthenticationManager implements ReactiveAuthenticationManager {
             username = JwtUtil.extractUsername(authToken);
         } catch (Exception e) {
             username = null;
-            System.out.println(e);
         }
 
         if (username != null && JwtUtil.validateToken(authToken)) {
@@ -33,7 +34,7 @@ public class AuthenticationManager implements ReactiveAuthenticationManager {
             UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                 username,
                 null,
-                claims.get("role", List.class)
+                claims.get(ROLE, List.class)
             );
 
             return Mono.just(authenticationToken);

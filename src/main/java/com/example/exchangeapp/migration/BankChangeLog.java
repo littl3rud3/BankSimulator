@@ -1,7 +1,7 @@
 package com.example.exchangeapp.migration;
 
-import static com.example.exchangeapp.config.MongockConfig.BANK_COLLECTION_NAME;
 import static com.example.exchangeapp.config.MongockConfig.insertCount;
+import static com.example.exchangeapp.constant.Constants.BANK_COLLECTION_NAME;
 
 import com.example.exchangeapp.model.Bank;
 import com.mongodb.client.result.DeleteResult;

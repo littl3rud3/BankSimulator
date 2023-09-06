@@ -21,60 +21,62 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequiredArgsConstructor
-@Tag(name = "Личный кабинет пользователя")
 @RequestMapping("/api/lk")
+@Tag(name = "User's personal account")
 public class UserController {
 
     private final UserService userService;
 
-    @Operation(summary = "Поменять имя")
     @PutMapping("/{id}")
+    @Operation(summary = "Change name")
     public Mono<UserDTO> changeName(@PathVariable String id, @RequestBody PersonalInfoDTO newInfo) {
 
         return userService.changeName(id, newInfo);
     }
 
-    @Operation(summary = "Личный кабинет")
     @GetMapping("/{userId}")
+    @Operation(summary = "Personal account")
     public Mono<UserDTO> userInfo(@PathVariable String userId) {
 
         return userService.userInfo(userId);
     }
 
-    @Operation(summary = "Списание денежных средств")
     @PostMapping("/{userId}/buy")
+    @Operation(summary = "Debiting funds")
     public Mono<UserDTO> buy(@PathVariable String userId, @RequestParam Long price) {
 
         return userService.buy(userId, price);
     }
 
-    @Operation(summary = "Пополнение счёта")
     @PostMapping("/{userId}/add")
+    @Operation(summary = "Adding funds to your account")
     public Mono<UserDTO> addMoney(@PathVariable String userId, @RequestParam Long amount) {
 
         return userService.addMoney(userId, amount);
     }
 
-    @Operation(summary = "Регистрация нового пользователя")
+    @Operation(summary = "Register a new user")
     @PostMapping("/register")
     public Mono<UserDTO> create(@RequestBody UserDTO userDTO) {
 
         return userService.create(userDTO);
     }
 
-    @Operation(summary = "Удалить пользователя")
     @DeleteMapping("/{userId}")
+    @Operation(summary = "Delete user")
     public Mono<Void> delete(@PathVariable String userId) {
 
         return userService.delete(userId);
     }
-
+    
     @PostMapping("/login")
+    @Operation(summary = "Authorization")
     public Mono<ResponseEntity<?>> login(@RequestBody UserDTO userDTO) {
 
         return userService.login(userDTO);
     }
-
+    
+    @Operation(summary = "Exchange")
     @GetMapping("{userId}/convert/{from}/{to}")
     public Mono<Double> convert(@PathVariable String userId,
                                 @PathVariable Rate from,

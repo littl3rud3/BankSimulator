@@ -15,13 +15,13 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequiredArgsConstructor
-@Tag(name = "Контроллер курса валют")
+@Tag(name = "Exchange rates")
 @RequestMapping("/api/rate")
 public class ExchangeController {
 
     private final ExchangeService exchangeService;
 
-    @Operation(summary = "Конвертация валюты")
+    @Operation(summary = "Exchange")
     @GetMapping("/convert")
     public Mono<Double> convert(@RequestParam String from,
                                 @RequestParam String to,
@@ -30,7 +30,7 @@ public class ExchangeController {
         return exchangeService.exchange(from, to, amount);
     }
 
-    @Operation(summary = "Получить курс обмена")
+    @Operation(summary = "Exchange rate")
     @GetMapping("/{from}/{to}")
     public Mono<Double> getRate(@PathVariable String from,
                                 @PathVariable String to) {
@@ -38,7 +38,7 @@ public class ExchangeController {
         return exchangeService.getRate(from, to);
     }
 
-    @Operation(summary = "Список всех курсов по отношению к введённой валюте")
+    @Operation(summary = "List of all exchange rates relative to the entered currency")
     @GetMapping("/{from}")
     public Mono<Map<String, Double>> getAllCurrencies(@PathVariable String from) {
 

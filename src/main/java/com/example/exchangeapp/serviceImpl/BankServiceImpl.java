@@ -7,7 +7,7 @@ import com.example.exchangeapp.DTO.PersonalInfoDTO;
 import com.example.exchangeapp.mapper.BankMapper;
 import com.example.exchangeapp.mapper.PersonalInfoMapper;
 import com.example.exchangeapp.model.Bank;
-import com.example.exchangeapp.model.PersonalInfo;
+import com.example.exchangeapp.model.User;
 import com.example.exchangeapp.repository.BankRepository;
 import com.example.exchangeapp.repository.UserRepository;
 import com.example.exchangeapp.service.BankService;
@@ -32,10 +32,7 @@ public class BankServiceImpl implements BankService {
     public Flux<PersonalInfoDTO> allClients(String bankName) {
 
         return userRepository.findAllByPersonalInfoBankIdsIn(List.of(List.of(bankName)))
-                             .map(user -> {
-                                 PersonalInfo personalInfo = user.getPersonalInfo();
-                                 return personalInfo;
-                             })
+                             .map(User::getPersonalInfo)
                              .map(personalInfoMapper::toDTO);
     }
 

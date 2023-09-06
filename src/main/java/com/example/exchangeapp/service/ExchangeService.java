@@ -5,34 +5,34 @@ import java.util.Map;
 import reactor.core.publisher.Mono;
 
 /**
- * Сервис обмена валют.
+ * Currency exchange service.
  */
 public interface ExchangeService {
 
     /**
-     * Обменять валюту.
+     * Exchange.
      *
-     * @param from   из какой валюты
-     * @param to     в какую валюту
-     * @param amount какое кол-во
-     * @return рез-тат конвертации
+     * @param from   from which currency
+     * @param to     in what currency
+     * @param amount how much money to exchange
+     * @return conversion result
      */
     Mono<Double> exchange(String from, String to, Double amount);
 
     /**
-     * Получить курс обмена.
+     * Get the exchange rate.
      *
-     * @param from из какой валюты
-     * @param to   в какую волюту
-     * @return курс обмена
+     * @param from   from which currency
+     * @param to     in what currency
+     * @return exchange rate
      */
     Mono<Double> getRate(String from, String to);
 
     /**
-     * Получить список всех курсов по отношению к введённой.
+     * Get a list of all courses relative to the one entered.
      *
-     * @param from из какой валюты
-     * @return все курсы по отношению к введённой валюте
+     * @param from   from which currency
+     * @return all rates in relation to the entered currency
      */
     Mono<Map<String, Double>> getAllCurrencies(String from);
 }

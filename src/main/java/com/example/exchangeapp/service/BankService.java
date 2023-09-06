@@ -6,47 +6,47 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
- * Сервис для взаимодействия с банками.
+ * A service for interacting with banks.
  */
 public interface BankService {
 
     /**
-     * Список всех клиентов банка.
+     * A list of all the bank's clients.
      *
-     * @param bankName название банка
-     * @return Список клиентов
+     * @param bankName Bank name
+     * @return List of clients
      */
     Flux<PersonalInfoDTO> allClients(String bankName);
 
     /**
-     * Добавить новый банк.
+     * Add new bank.
      *
-     * @param newBank Информация о банке
-     * @return Сохранённая сущность банка
+     * @param newBank Information about the bank
+     * @return Saved Bank Entity
      */
     Mono<BankDTO> create(BankDTO newBank);
 
     /**
-     * Поменять название банка.
+     * Change bank name.
      *
-     * @param objectId Идентификатор банка
-     * @param newName     Новое название банка
-     * @return Обновлённая сущность банка
+     * @param objectId Bank ID
+     * @param newName     New bank name
+     * @return Saved Bank Entity
      */
     Mono<BankDTO> update(String objectId, String newName);
 
     /**
-     * Удалить банк по идентификатору.
+     * Delete a bank by ID.
      *
-     * @param bankId идентификатор
-     * @return пустота
+     * @param bankId Bank ID
+     * @return Nothing
      */
     Mono<Void> delete(String bankId);
 
     /**
-     * Список всех банков.
+     * List of all banks.
      *
-     * @return список банков
+     * @return Bank list
      */
     Flux<BankDTO> getAll();
 }

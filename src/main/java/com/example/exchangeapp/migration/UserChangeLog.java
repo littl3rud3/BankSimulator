@@ -1,7 +1,7 @@
 package com.example.exchangeapp.migration;
 
-import static com.example.exchangeapp.config.MongockConfig.USER_COLLECTION_NAME;
 import static com.example.exchangeapp.config.MongockConfig.insertCount;
+import static com.example.exchangeapp.constant.Constants.USER_COLLECTION_NAME;
 
 import com.example.exchangeapp.model.User;
 import com.mongodb.client.result.DeleteResult;

@@ -1,16 +1,16 @@
-# Банковская система
+# Bank System
 
-## Описание
+## Description
 Система для хранения данных от личного кабинета пользователя.
-- У каждого пользователя есть внутренняя сущность с личными данными.
-- У каждого пользователя может быть много банков.
-- У каждого банка может быть много клиентов.
+- Each user has an internal entity with personal data.
+- Each user can have many banks.
+- Each bank can have many customers.
 
-## Технологии
+## Tech Stack
 * Java 17
 * Spring Boot 2.6.6
 * Spring Webflux
-* Spring Security Reactive (JWT реализация)
+* Spring Security Reactive (JWT)
 * Spring Data Reactive
 * Reactive Feign Client
 * Gradle
