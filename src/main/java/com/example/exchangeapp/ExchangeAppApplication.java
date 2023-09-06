@@ -8,13 +8,8 @@ import reactivefeign.spring.config.EnableReactiveFeignClients;
 
 @SpringBootApplication
 @EnableReactiveFeignClients
-//@EnableMongock <---- Не работает
-@OpenAPIDefinition(
-    info = @Info(
-        title = "Exchange application",
-        version = "0.0.1",
-        description = "Банковское приложение")
-)
+//@EnableMongock <---- Doesn't work
+@OpenAPIDefinition(info = @Info(title = "Bank Simulator", version = "0.0.1", description = "Banking System Simulator"))
 public class ExchangeAppApplication {
 
     public static void main(String[] args) {
